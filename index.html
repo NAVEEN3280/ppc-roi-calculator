@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PPC ROI Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg"></div>
+
+    <nav class="navbar">
+      <div class="logo">
+        <a href="https://www.noolmedia.in/"
+          ><img src="nool.png" alt="Logo"
+        /></a>
+      </div>
+      <ul class="nav-items">
+        <li><a href="https://www.noolmedia.in/">Home</a></li>
+        <li>
+          <a href="https://www.noolmedia.in/#mediaiskgjyue11">Services</a>
+        </li>
+        <li><a href="https://www.noolmedia.in/#comp-m0f8afp6">About Us</a></li>
+        <li><a href="https://www.noolmedia.in/blog">Blog</a></li>
+        <li><a href="https://www.noolmedia.in/#comp-lsvshvee">Projects</a></li>
+        <li>
+          <a href="https://www.noolmedia.in/#comp-lsvshvef1">Lets Talk</a>
+        </li>
+        <li>
+          <a href="https://seo-report.onrender.com/"
+            ><button class="sitescore">Site score ></button></a
+          >
+        </li>
+        <li>
+          <a href="https://www.noolmedia.in/#comp-lsvshvef1"
+            >SEO Snippet Optimizer</a
+          >
+        </li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+    <div class="container">
+      <h2>PPC ROI Calculator</h2>
+
+      <label>Ad Spend (₹ or $)</label>
+      <input type="number" id="adSpend" placeholder="Enter total ad spend" />
+
+      <label>Clicks</label>
+      <input type="number" id="clicks" placeholder="Enter total clicks" />
+
+      <label>Conversion Rate (%)</label>
+      <input
+        type="number"
+        id="conversionRate"
+        placeholder="Enter conversion rate"
+      />
+
+      <label>Revenue per Conversion (₹ or $)</label>
+      <input
+        type="number"
+        id="revenuePerConversion"
+        placeholder="Enter revenue per conversion"
+      />
+
+      <button onclick="calculateROI()">Calculate ROI</button>
+
+      <div class="result" id="result" style="display: none">
+        <h3>Results</h3>
+        <p><strong>Cost Per Click (CPC):</strong> <span id="cpc"></span></p>
+        <p>
+          <strong>Total Conversions:</strong>
+          <span id="totalConversions"></span>
+        </p>
+        <p><strong>Total Revenue:</strong> <span id="totalRevenue"></span></p>
+        <p><strong>ROI (%):</strong> <span id="roi"></span></p>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>

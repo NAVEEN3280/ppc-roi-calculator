@@ -1,56 +1,47 @@
 function calculateROI() {
+  const cpc = parseFloat(document.getElementById("cpc").value);
   const adSpend = parseFloat(document.getElementById("adSpend").value);
-  const clicks = parseFloat(document.getElementById("clicks").value);
   const conversionRate = parseFloat(
     document.getElementById("conversionRate").value
   );
-  const revenuePerConversion = parseFloat(
-    document.getElementById("revenuePerConversion").value
+  const closeRate = parseFloat(document.getElementById("closeRate").value);
+  const customerValue = parseFloat(
+    document.getElementById("customerValue").value
   );
 
   if (
+    isNaN(cpc) ||
     isNaN(adSpend) ||
-    isNaN(clicks) ||
     isNaN(conversionRate) ||
-    isNaN(revenuePerConversion)
+    isNaN(closeRate) ||
+    isNaN(customerValue)
   ) {
     alert("Please enter valid numbers in all fields.");
     return;
   }
 
-  if (clicks === 0) {
-    alert("Clicks cannot be zero.");
+  if (cpc <= 0 || adSpend <= 0) {
+    alert("CPC and Ad Spend must be greater than zero.");
     return;
   }
 
-  if (adSpend === 0) {
-    alert("Ad spend must be greater than zero.");
-    return;
-  }
-
-  const cpc = adSpend / clicks; // Cost Per Click
-  const totalConversions = clicks * (conversionRate / 100); // Total Conversions
-  const totalRevenue = totalConversions * revenuePerConversion; // Total Revenue
+  // Calculations
+  const clicks = adSpend / cpc; // Total Clicks
+  const conversions = clicks * (conversionRate / 100); // Conversions
+  const customers = conversions * (closeRate / 100); // Total Customers
+  const totalRevenue = customers * customerValue; // Revenue
   const roi = ((totalRevenue - adSpend) / adSpend) * 100; // ROI Percentage
+  const cpl = conversions > 0 ? adSpend / conversions : 0; // Cost Per Lead
 
-  document.getElementById("cpc").textContent = cpc.toFixed(2);
-  document.getElementById("totalConversions").textContent =
-    totalConversions.toFixed(0);
-  document.getElementById("totalRevenue").textContent = totalRevenue.toFixed(2);
-
-  // If ROI is negative, display as a loss
-  if (roi < 0) {
-    document.getElementById("roi").textContent =
-      "Loss: " + Math.abs(roi).toFixed(2) + "%";
-  } else {
-    document.getElementById("roi").textContent = roi.toFixed(2) + "%";
-  }
+  // Update results
+  document.getElementById("resultClicks").textContent = clicks.toFixed(0);
+  document.getElementById("resultConversions").textContent =
+    conversions.toFixed(0);
+  document.getElementById("resultCustomers").textContent = customers.toFixed(0);
+  document.getElementById("resultRevenue").textContent =
+    "₹" + totalRevenue.toLocaleString();
+  document.getElementById("resultROI").textContent = roi.toFixed(2) + "%";
+  document.getElementById("resultCPL").textContent = "₹" + cpl.toFixed(2); // Display CPL
 
   document.getElementById("result").style.display = "block";
 }
-
-// Toggle Navigation (if applicable)
-document.getElementById("hamburger").addEventListener("click", function () {
-  const navItems = document.querySelector(".nav-items");
-  navItems.classList.toggle("active");
-});

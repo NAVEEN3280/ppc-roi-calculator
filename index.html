@@ -11,9 +11,9 @@
 
     <nav class="navbar">
       <div class="logo">
-        <a href="https://www.noolmedia.in/"
-          ><img src="nool.png" alt="Logo"
-        /></a>
+        <a href="https://www.noolmedia.in/">
+          <img src="nool.png" alt="Logo" />
+        </a>
       </div>
       <ul class="nav-items">
         <li><a href="https://www.noolmedia.in/">Home</a></li>
@@ -26,15 +26,24 @@
         <li>
           <a href="https://www.noolmedia.in/#comp-lsvshvef1">Lets Talk</a>
         </li>
-        <li>
-          <a href="https://seo-report.onrender.com/"
-            ><button class="sitescore">Site score ></button></a
-          >
-        </li>
-        <li>
-          <a href="https://www.noolmedia.in/#comp-lsvshvef1"
-            >SEO Snippet Optimizer</a
-          >
+        <li class="dropdown-container">
+          <a href="#">SEO Tools</a>
+          <div class="dropdown">
+            <a href="https://seo-report.onrender.com">Site Score</a>
+            <a href="https://cro-roi-calculator.vallaham.com/"
+              >CRO ROI Calculator</a
+            >
+            <a href="https://titletag.vallaham.com/"
+              >Meta title length checker</a
+            >
+            <a href="https://competitoraudit.vallaham.com/">Competitor Audit</a>
+            <a href="https://ppc-roi-calculator.vallaham.com/"
+              >PPC ROI Calculator</a
+            >
+            <a href="https://seo-roi-calculator.vallaham.com/"
+              >SEO ROI Calculator</a
+            >
+          </div>
         </li>
       </ul>
       <div class="hamburger" id="hamburger">
@@ -45,40 +54,61 @@
     </nav>
     <div class="container">
       <h2>PPC ROI Calculator</h2>
-
-      <label>Ad Spend (₹ or $)</label>
-      <input type="number" id="adSpend" placeholder="Enter total ad spend" />
-
-      <label>Clicks</label>
-      <input type="number" id="clicks" placeholder="Enter total clicks" />
-
-      <label>Conversion Rate (%)</label>
-      <input
-        type="number"
-        id="conversionRate"
-        placeholder="Enter conversion rate"
-      />
-
-      <label>Revenue per Conversion (₹ or $)</label>
-      <input
-        type="number"
-        id="revenuePerConversion"
-        placeholder="Enter revenue per conversion"
-      />
-
+      <div class="input-group">
+        <label
+          >What is the average cost per click for keywords relating to your
+          business?</label
+        >
+        <input
+          type="number"
+          id="cpc"
+          placeholder="CPC (Cost Per Click) (₹ or $)"
+        />
+      </div>
+      <div class="input-group">
+        <label>How much do you intend to spend on your ad campaign?</label>
+        <input type="number" id="adSpend" placeholder="Ad Spend (₹ or $)" />
+      </div>
+      <div class="input-group">
+        <label
+          >What is the conversion rate (CVR) of visitors to your website that
+          become new leads?</label
+        >
+        <input
+          type="number"
+          id="conversionRate"
+          placeholder="Conversion Rate (%)"
+        />
+      </div>
+      <div class="input-group">
+        <label>How many of your leads turn into customers?</label>
+        <input type="number" id="closeRate" placeholder="Close Rate (%)" />
+      </div>
+      <div class="input-group">
+        <label
+          >On average, how much is each customer worth to your business?</label
+        >
+        <input
+          type="number"
+          id="customerValue"
+          placeholder="Average Customer Value (₹ or $)"
+        />
+      </div>
       <button onclick="calculateROI()">Calculate ROI</button>
 
       <div class="result" id="result" style="display: none">
         <h3>Results</h3>
-        <p><strong>Cost Per Click (CPC):</strong> <span id="cpc"></span></p>
+        <p><strong>Visits:</strong> <span id="resultClicks"></span></p>
+        <p><strong>Leads:</strong> <span id="resultConversions"></span></p>
+        <p><strong>Sales:</strong> <span id="resultCustomers"></span></p>
+        <p><strong>Total Revenue:</strong> <span id="resultRevenue"></span></p>
         <p>
-          <strong>Total Conversions:</strong>
-          <span id="totalConversions"></span>
+          <strong>CPL (Cost Per Lead):</strong> <span id="resultCPL"></span>
         </p>
-        <p><strong>Total Revenue:</strong> <span id="totalRevenue"></span></p>
-        <p><strong>ROI (%):</strong> <span id="roi"></span></p>
+        <p><strong>ROI (%):</strong> <span id="resultROI"></span></p>
       </div>
     </div>
+
+    <script src="script.js"></script>
   </body>
-  <script src="script.js"></script>
 </html>
